@@ -14,3 +14,11 @@ export const AppDataSource = new DataSource({
     logging: true,
     synchronize: true
 })
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err)
+    })
