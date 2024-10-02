@@ -10,7 +10,7 @@ async function main() {
   try {
     await AppDataSource.initialize();
     console.log("DB connect");
-    app.listen(PORT | 3000);
+    app.listen(PORT);
     console.log("Server on port", PORT);
   } catch (error) {
     console.error(error);
