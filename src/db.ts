@@ -5,7 +5,7 @@ import { Ticket } from "./ticket/ticket.entity"
 import { env } from "process"
 
 export const AppDataSource = new DataSource({
-    type: process.env.DB_TYPE as "postgres",
+    type: "postgres",
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT),
     username: process.env.DB_USER,
