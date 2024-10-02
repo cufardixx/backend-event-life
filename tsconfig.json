@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6", // o el objetivo que desees
     "module": "commonjs",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
