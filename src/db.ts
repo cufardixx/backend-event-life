@@ -2,24 +2,22 @@ import { DataSource } from "typeorm"
 import { User } from "./user/user.entity"
 import { Event } from "./event/event.entity"
 import { Ticket } from "./ticket/ticket.entity"
-import { env } from "process"
+import { Category } from "./category/category.entity"
+import dotenv from "dotenv";
 
-export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: process.env.DB_HOST || 'localhost',
-    port: Number(process.env.DB_PORT) || 5432,
-    username: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    entities: [User, Event, Ticket],
-    logging: true,
-    synchronize: true,
+dotenv.config();
+
+const AppDataSource = new DataSource({
+  type: "mysql",
+  host: process.env.MYSQL_ADDON_HOST,
+  port: 3306,
+  username: process.env.MYSQL_ADDON_USER,
+  password: process.env.MYSQL_ADDON_PASSWORD,
+  database: process.env.DB_NAME,
+  synchronize: true,
+  logging: false,
+  entities: [User, Event, Ticket, Category],
 });
 
-AppDataSource.initialize()
-    .then(() => {
-        console.log("Data Source has been initialized!");
-    })
-    .catch((err) => {
-        console.error("Error during Data Source initialization", err);
-    });
+export default AppDataSource;
+
